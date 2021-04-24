@@ -1,0 +1,160 @@
+$outer-border: solid 1px rgb(4, 70, 15);
+
+@mixin animation($property) {
+  -webkit-animation: $property;
+  -moz-animation: $property;
+  -o-animation: $property;
+  animation: $property;
+}
+
+@mixin selector($property) {
+  user-select: $property;
+  -moz-user-select: $property;
+  -khtml-user-select: $property;
+  -webkit-user-select: $property;
+  -o-user-select: $property;
+}
+
+body {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  width: 90%;
+  flex: 2;
+  section {
+    min-width: 500px;
+    width: 100%;
+    #resultSection,
+    #results {
+      margin: 0 50px;
+    }
+    #resultSection {
+      color: white;
+      min-width: 500px;
+      padding: 10px 40px;
+      height: 40px;
+      border: $outer-border;
+      background-color: rgb(29, 155, 4);
+    }
+    #results {
+      .error {
+        background-color: rgba(202, 70, 96, 0.466);
+        vertical-align: middle;
+        height: 70px;
+        border-radius: 0 0 3px 3px;
+        padding: 10px 40px;
+        min-width: 500px;
+        font-weight: bold;
+        border-bottom: $outer-border;
+        border-right: $outer-border;
+        border-left: $outer-border;
+      }
+    }
+  }
+}
+
+table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 500px;
+  td,
+  th {
+    border: $outer-border;
+    padding: 8px;
+  }
+  th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4caf50;
+    color: white;
+  }
+  tr {
+    &:hover {
+      background-color: #ddd;
+    }
+  }
+}
+
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
+#submitWarn {
+  margin-top: 2px;
+  color: rgb(231, 1, 1);
+  font-size: x-small;
+  text-align: center;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#pop-up {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  line-height: 100vh;
+  text-align: center;
+  font-size: 35vw;
+  z-index: 5;
+  @include selector(none);
+}
+
+.popAnimation {
+  @include animation(fade 3s infinite);
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-o-keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-moz-keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Article Meanings</title>
+    </head>
+
+    <body>
+        <div id="pop-up" class="hidden"></div>
+        <header>
+            <div class="header">
+                Article Meanings
+            </div>
+        </header>
+    
+        <main>
+            <section>
+                <form id="submitForm" onsubmit="return Client.handleSubmit(event)">
+                    <div id="articleOptions">
+                        <span>Choose your article type:</span>
+                        <select id="reqType" onchange="Client.switchForm()">
+                            <option value="text" selected>text</option>
+                            <option value="url">url</option>
+                        </select>
+                        <textarea id="articleSrc" type="text" name="input" value="" onblur="Client.onBlur()" placeholder="Article Text ..." required ></textarea>
+                        <div id="submitWarn" class="hidden">Enter your article then press Submit</div>
+                    </div>
+                    <input type="submit" name="" value="submit">
+                </form>
+            </section>
+            <section>
+                <div id="resultSection">
+                    <strong>Results:</strong>
+                </div>
+                <div id="results">
+                </div>
+                
+            </section>
+        </main>
+    
+        <footer>
+            <small>&copy; Copyright 2021, Jimmy Corporation</small>
+        </footer>
+        
+        <script>
+            // Check that service workers are supported
+            if ('serviceWorker' in navigator) {
+                // Use the window load event to keep the page load performant
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js');
+                });
+            }
+           </script>
+    </body>
+</html>

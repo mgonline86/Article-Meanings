@@ -1,0 +1,60 @@
+$normal-btn-color: rgb(7, 97, 37);
+$hover-btn-color: rgb(6, 134, 44);
+$outer-border: solid 1px rgb(4, 70, 15);
+$warn-border: solid 2px rgb(231, 1, 1);
+
+@mixin box-shadow($property) {
+  -webkit-box-shadow: $property;
+  box-shadow: $property;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-top: $outer-border;
+  border-right: $outer-border;
+  border-left: $outer-border;
+  border-radius: 3px 3px 0 0;
+  padding: 40px;
+  margin: 0 50px;
+  min-width: 500px;
+  select {
+    width: 60px;
+    outline: none;
+  }
+  input[type="submit"] {
+    width: 80px;
+    height: 30px;
+    @include box-shadow(2px 3px 2px 1px rgba(0, 0, 0, 0.342));
+    font-size: 16px;
+    padding: 5px;
+    color: white;
+    background-color: $normal-btn-color;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none !important;
+    outline: none;
+    &:hover {
+      background-color: $hover-btn-color;
+    }
+    &:active {
+      @include box-shadow(none);
+      transform: translateY(1px);
+    }
+  }
+  .warnBorder {
+    border: $warn-border;
+    border-radius: 4px;
+  }
+}
+
+input,
+textarea {
+  padding: 5px 20px;
+  width: 100%;
+  line-height: 16px;
+  margin-top: 10px;
+  resize: vertical;
+}

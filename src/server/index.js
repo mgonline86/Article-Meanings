@@ -47,13 +47,17 @@ app.post('/apiKey', function (req, res) {
           }
 
     let urlSuffix = Object.keys(param).map(key => `${key}=${param[key]}`).join('&');
-
-
+     console.log("before fetch");
+     console.log(`https://api.meaningcloud.com/sentiment-2.1?${urlSuffix}`);
     fetch(`https://api.meaningcloud.com/sentiment-2.1?${urlSuffix}`, {
         method: 'POST',
         body: JSON.stringify(param),
-        headers: { 'Content-Type': 'multipart/form-data' }
-    }).then(data => data.json())
+        headers: { 'Content-Type': 'application/json' }
+    }).then(data => {
+        console.log("after fetch");
+        console.log(data);
+        return data.json()
+    })
       .then(data => res.send(data))
       .catch(err => res.status(500).send(err));
 })

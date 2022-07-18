@@ -46,10 +46,13 @@ app.post('/apiKey', function (req, res) {
                             };
           }
 
-    fetch(`https://api.meaningcloud.com/sentiment-2.1?key=${process.env.API_KEY}`, {
+    let urlSuffix = Object.keys(param).map(key => `${key}=${param[key]}`).join('&');
+
+
+    fetch(`https://api.meaningcloud.com/sentiment-2.1?${urlSuffix}`, {
         method: 'POST',
         body: JSON.stringify(param),
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'multipart/form-data' }
     }).then(data => data.json())
       .then(data => res.send(data))
       .catch(err => res.status(500).send(err));

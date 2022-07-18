@@ -46,7 +46,7 @@ app.post('/apiKey', function (req, res) {
                             };
           }
 
-    fetch('https://api.meaningcloud.com/sentiment-2.1', {
+    fetch(`https://api.meaningcloud.com/sentiment-2.1?key=${process.env.API_KEY}`, {
         method: 'POST',
         body: JSON.stringify(param),
         headers: { 'Content-Type': 'application/json' }
